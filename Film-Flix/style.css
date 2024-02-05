@@ -1,0 +1,15 @@
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #1c2333;
+}
+
+h1 {
+    font-family: "Roboto", sans-serif;
+    color: #cf5c36 ;
+}
+.position {
+    margin-top: 1rem;
+}
