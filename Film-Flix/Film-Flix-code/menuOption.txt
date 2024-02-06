@@ -1,0 +1,7 @@
+Welcome to the Films Menu options.
+1. Add a film record.
+2. Delete a film record.
+3. Update a film record.
+4. Print all film records.
+5. Open Report Menu.
+6. Exit App.

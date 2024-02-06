@@ -1,0 +1,6 @@
+Welcome to the Films Reports section.
+1. Display details of all films.
+2. Display all films of a particular genre.
+3. Display all films of a particular year.
+4. Display all films of a particular rating.
+5. Exit.
