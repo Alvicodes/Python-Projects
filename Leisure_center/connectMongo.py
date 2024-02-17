@@ -8,8 +8,6 @@ load_dotenv()
 mongoCnt = os.getenv('CLIENT_CONNECT')
 mongoCollDB = os.getenv('COLLECT_DB')
 
-# print(mongoCnt)
-# print(mongoCollDB)
 # this is the string connection
 client = MongoClient(mongoCnt)
 
