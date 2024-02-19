@@ -5,7 +5,7 @@ import os
 load_dotenv()
 
 
-def get_all_products(connection):
+def get_all_gsproducts(connection):
     cursor = connection.cursor()
     query = ("SELECT products.product_id, products.name, products.uom_id, products.price_per_unit, uom.uom_name "
                 "FROM products INNER JOIN uom ON products.uom_id=uom.uom_id")
@@ -28,7 +28,7 @@ def get_all_products(connection):
 
     return responce
 
-def insert_new_product(connection, product):
+def insert_new_gsproduct(connection, product):
     cursor = connection.cursor()
     query =("INSERT INTO products "
           "(name, uom_id, price_per_unit)"
@@ -39,7 +39,7 @@ def insert_new_product(connection, product):
     
     return cursor.lastrowid
 
-def delete_product(connection, product_id):
+def delete_gsproduct(connection, product_id):
     cursor = connection.cursor()
     query =(f"DELETE FROM products where product_id={product_id}")
     cursor.execute(query)
@@ -47,7 +47,7 @@ def delete_product(connection, product_id):
 
 if __name__ == '__main__':
     connection = get_sql_connection()
-    print(delete_product(connection, 13))
+    print(delete_gsproduct(connection, 13))
     print("Product successfully deleted")
 
 # if __name__ == '__main__':
