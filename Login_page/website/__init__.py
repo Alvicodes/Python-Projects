@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
+from flask_login import LoginManager
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
@@ -12,7 +13,6 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
     
-    
     #registering blueprints with views/urls for app and location
     from .views import views
     from .auth import auth
@@ -23,11 +23,20 @@ def create_app():
     from .models import User, Note
     create_database(app)
     
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+    
+    # Telling flask how we load a user
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id)) # similar to filter but looks for primary key
+    
     return app
 
 # create function to check if database already exists
 def create_database(app):
-    if not path.exists('website/' + DB_NAME): # using a path module to check if db exists
+    if not path.exists('instance/' + DB_NAME): # using a path module to check if db exists
         with app.app_context():
             db.create_all() # create db if it doesn't exist
         print('Created Database!')
