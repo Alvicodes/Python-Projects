@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
+import json 
 
 #blueprint for flask app
 views = Blueprint('views', __name__)
@@ -12,7 +13,7 @@ def home():
     if request.method == 'POST':
         note = request.form.get('note') #retrieves note from html form
         
-        if len(note) < 1:
+        if len(note) < 2:
             flash('Note is too short', category='error')
         else:
             new_note = Note(data=note, user_id=current_user.id)
@@ -21,3 +22,16 @@ def home():
             flash('Note added!', category='success')
     
     return render_template("home.html", user=current_user) # allows you to reference current user and check if it is authenticated
+
+@views.route('/delete-note', methods=['POST'])
+def delete_note():
+    note = json.loads(request.data)
+    noteId = note['noteId']
+    note = Note.query.get(noteId)
+    if note:
+        if note.user_id == current_user.id:
+            db.session.delete(note)
+            db.session.commit()
+            flash('Note Deleted!', category='success')
+        
+    return jsonify({})
