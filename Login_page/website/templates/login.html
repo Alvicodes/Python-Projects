@@ -10,9 +10,9 @@
       <!-- Left Box -->
       <div class="col-lg-6 col-md-5 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">
           <div class="featured-image my-3">
-              <img src="../img/1.jpg" alt="" class="img-fluid rounded-5 login_img_main">
+              <img src="../static/img/1.jpg" alt="Login picture" class="img-fluid rounded-5 login_img_main">
           </div>
-          <small class="text-wrap text-center">Join experienced Designers on this platform.</small>
+          <small class="text-wrap text-center">Join thousands of people saving their notes with us!</small>
       </div>
       
       <!-- Login input -->
@@ -25,7 +25,7 @@
               </div>
               <form method="POST" >
                 <div class="form-group mb-2">
-                  <label for="email">Email Address</label>
+                  <label for="email" class="fsz-8">Email Address</label>
                   <input 
                     type="email" 
                     class="form-control"
@@ -36,7 +36,7 @@
                 </div>
                 
                 <div class="form-group">
-                  <label for="password">Password</label>
+                  <label for="password" class="fsz-8">Password</label>
                   <input 
                     type="password" 
                     class="form-control"
@@ -47,7 +47,7 @@
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary w-100 fs-6 my-3 ">Login</button>
-                <button class="btn btn-lg btn-light w-100 fs-6"><img src="../img/google.png" alt="" style="width: 20px; height: 20px"> <small class=" me-2">Sign in with google</small></button>
+                <button class="btn btn-lg btn-light w-100 fs-6"><img src="../static/img/google.png" alt="Google logo" style="width: 20px; height: 20px"> <small class=" me-2">Sign in with google</small></button>
                 </form>
 
 
@@ -61,19 +61,12 @@
                   </div>
                 </div>
               <div class="row">
-                  <p class="fsz-8">Dont have an account? <a href="#">Sign Up</a></p>
+                  <p class="fsz-8">Dont have an account? <a href="/sign-up">Sign Up</a></p>
               </div>
           </div>
 
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
 
 {% endblock %}

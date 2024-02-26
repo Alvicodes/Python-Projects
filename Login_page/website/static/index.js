@@ -6,3 +6,10 @@ function deleteNote(noteId) {
         window.location.href = "/";
    });
 }
+
+var popup;
+
+function genPassword(){
+     popup = window.open("Popup.html", "Popup", "width=300, height=300");
+     popup.focus();
+}

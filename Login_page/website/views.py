@@ -35,3 +35,6 @@ def delete_note():
             flash('Note Deleted!', category='success')
         
     return jsonify({})
+
+@views.route('/')
+def 
