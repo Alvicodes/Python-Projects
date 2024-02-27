@@ -1,9 +1,11 @@
-from flask import Blueprint, render_template, request, flash, jsonify
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
 import json 
+import string, random
 
+characters = list(string.ascii_letters + string.digits + "!@#$%^&*()")
 #blueprint for flask app
 views = Blueprint('views', __name__)
 
@@ -36,5 +38,42 @@ def delete_note():
         
     return jsonify({})
 
-@views.route('/')
-def 
+# Password generation 
+@views.route('/popup')
+def popup():
+    return render_template("popup.html") 
+
+def signup():
+    password = request.args.get('password')
+    return render_template('signup.html', password=password)
+
+@views.route('/generate-password', methods=['GET', 'POST'])
+def generate_password():
+    if request.method == 'POST':
+        password_length = int(request.form['password_length'])
+    else:
+        password_length = int(request.args.get('password_length'))
+    random.shuffle(characters)
+    password = "".join(random.choices(characters, k=password_length))
+    return render_template('popup.html', password=password)
+    # if password:
+    #     return redirect(url_for('auth.sign_up', password=password))
+    # else:
+    #     return  render_template('popup.html', password=password)    
+
+@views.route('/', methods=['GET', 'POST'])
+def index():
+   if request.method == 'POST':
+       password_length = int(request.form['password_length'])
+       password, error = generate_password(password_length)
+       if password:
+           return render_template('popup.html', password=password, error=None)
+       else:
+           return render_template('popup.html', password=None, error=error)
+   else:
+        return render_template('popup.html', password=None, error=None)
+
+@views.route('/regenerate',methods=['POST'])
+def regenerate():
+    return generate_password()
+

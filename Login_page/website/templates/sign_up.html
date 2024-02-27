@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
-    <!-- Login Container -->
+    <!-- Sign Up Container -->
 
     <div class="row border rounded-5 p-3 bg-white shadow box-area">
       <!-- Left Box -->
@@ -49,8 +49,9 @@
                             id="password1"
                             name="password1"
                             placeholder="At least 8 characters"
+                            value="{{ password }}"
                             />
-                            <p class="fsz-9 text-body-secondary mt-2"> click <a href="#">here</a> to generate a secure password </p>
+                            <p class="fsz-9 text-body-secondary mt-2"> click <a href="#" onClick="genPassword()">here</a> to generate a secure password </p>
                     </div>
                     <div class="form-group mb-3">
                         <label for="password2" class="fsz-8">Confirm Password*</label>
