@@ -56,7 +56,7 @@ def sign_up():
             new_user = User(email=email, first_name=first_name, password=generate_password_hash(password1, method='pbkdf2')) # sha256 is a hashing algorithm 
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True)
+            login_user(new_user, remember=True)
             flash('Account created!', category='success')
             return redirect(url_for('views.home')) # using views.home  t be redirected to the home page. Targets root incase of any change, no effect to code
             

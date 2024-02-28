@@ -1,20 +1,42 @@
-{% extends "base.html" %} {% block title%}Home{% endblock%}
+{% extends "base.html" %} {% block title%}Home{% endblock%} {% block content %}
+<h1 align="center" class="fw-bold my-5 py-2">Sticky Notes</h1>
+<ul
+  class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-evenly"
+  id="notes"
+>
+  {% for note in user.notes %}
 
-{% block content %}
-<h1 align="center">Notes</h1>
-<ul class="list-group list-group-flush" id="notes">
-    {% for note in user.notes %}
-    <li class="list-group-item d-flex justify-content-between">{{ note.data }}
-        <button type="button" class="btn-close" onClick="deleteNote({{ note.id }})">
-        </button>
-    </li>
-    {% endfor %}
+  <li
+    class="list-group-item d-flex justify-content-between my-2 mx-2 p-3 rounded-5 note-pad"
+  >
+    <div class="color-pick d-flex">
+      <ul class="clr-container mt-5 p-0">
+        <li class="note-clr clr-pink"></li>
+        <li class="note-clr clr-orange"></li>
+        <li class="note-clr clr-yellow"></li>
+        <li class="note-clr clr-lightblue"></li>
+        <li class="note-clr clr-blue"></li>
+      </ul>
+    </div>
+<div class="w-100">
+    <span class="me-2">{{ note.data }}</span>
+    </div><button
+      type="button"
+      class="btn-close "
+      onClick="deleteNote({{ note.id }})"
+    ></button>
+  </li>
+  {% endfor %}
 </ul>
 <form method="POST">
-    <textarea name="note" id="note" class="form-control"></textarea>
-    <br>
-    <div align="center">
-        <button type="submit" class="btn btn-primary">Add Note</button>
-    </div>
+  <textarea
+    name="note"
+    id="note"
+    class="form-control mt-5 mx-2 p-3 rounded-5"
+  ></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Note</button>
+  </div>
 </form>
 {% endblock %}
