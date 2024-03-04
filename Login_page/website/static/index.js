@@ -13,7 +13,7 @@ function genPassword() {
   popup.focus();
 }
 
-// // Copy to clipboard
+//! // Copy to clipboard
 //  const clipboard = document.querySelector('.clipboard');
 //  clipboard.addEventListener('click', () =>{
 //      console.log("object copied to clipboard");
@@ -27,6 +27,7 @@ function genPassword() {
 //      setPassword();
 // });
 
+//! // Set Password
 // function setPassword(){
 //      if (window.opener != null && !window.opener.closed){
 //           const passwordText = generatedPassword.textContent;
@@ -37,7 +38,7 @@ function genPassword() {
 //      window.close();
 // };
 
-const clr_Selection = document.querySelectorAll(".note-clr");
+const clrSelect = document.querySelectorAll(".note-clr");
 const note_Background = document.querySelector(".note-pad");
 // const clr_Pink = document.getElementById('clr-pink');
 // const clr_Orange = document.getElementById('clr-orange');
@@ -45,7 +46,7 @@ const note_Background = document.querySelector(".note-pad");
 // const clr_lightblue = document.getElementById('clr-lightblue');
 // const clr_Blue = document.getElementById('clr-blue');
 
-clr_Selection.forEach((item) => {
+clrSelect.forEach((item) => {
   item.addEventListener("click", () => {
     const clrClass = item.classList[2];
     const noteBackground = noteBackgrounds[index];
@@ -58,3 +59,7 @@ clr_Selection.forEach((item) => {
     note_Background.classList.add(clrClass);
   });
 });
+
+//! Generate random code for each note
+// attach to li onclick
+//
