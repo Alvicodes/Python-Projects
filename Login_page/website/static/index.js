@@ -40,6 +40,7 @@ function genPassword() {
 
 const clrSelect = document.querySelectorAll(".note-clr");
 const note_Background = document.querySelector(".note-pad");
+// const uniqueNoteId = document.querySelector()
 // const clr_Pink = document.getElementById('clr-pink');
 // const clr_Orange = document.getElementById('clr-orange');
 // const clr_Yellow = document.getElementById('clr-yellow');
@@ -48,16 +49,23 @@ const note_Background = document.querySelector(".note-pad");
 
 clrSelect.forEach((item) => {
   item.addEventListener("click", () => {
-    const clrClass = item.classList[2];
-    const noteBackground = noteBackgrounds[index];
-    // Remove all class names that start with 'clr-'
-    Array.from(noteBackground.classList).forEach((className) => {
-      if (className.startsWith("clr-")) {
-        noteBackground.classList.remove(className);
+    // const clrClass = item.classList[2];
+    // const uniqueNoteId = noteBackgrounds[index];
+    var colorClass = item.classList[1];
+    var parentNote = item.closest('.note-pad');
+    if (parentNote && colorClass) {
+      if (parentNote.classList.contains(colorClass)) {
+        parentNote.classList.remove(colorClass);
       }
+      else {
+        var existingColorClass = parentNote.classList.value.match(/clr-\w+/);// Regular expression to match "clr-" followed by any word characters
+        if (existingColorClass) {
+          parentNote.classList.remove(existingColorClass);
+        }
+        parentNote.classList.add(colorClass);
+      }
+    }
     });
-    note_Background.classList.add(clrClass);
-  });
 });
 
 //! Generate random code for each note

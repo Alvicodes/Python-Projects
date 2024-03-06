@@ -58,21 +58,7 @@ button.btn{
     height: 250px;
     font-size: 0.813rem;
 }
-/* #clr-pink {
-    background: #FE938C;
-}
-#clr-orange {
-    background: #E6B89C;
-}
-#clr-yellow {
-    background: #EAD2AC;
-}
-#clr-lightblue {
-    background: #9CAFB7;
-}
-#clr-blue {
-    background: #4281A4;
-} */
+
 .clr-pink {
     background: #FE938C;
 }
@@ -96,7 +82,7 @@ button.btn{
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    /* background-color: #9CAFB7; */
+    border: 2.5px solid white;    /* backgound-color: #9CAFB7; */
     margin:5px 5px;
     cursor: pointer;
     transition: transform 0.2s;
