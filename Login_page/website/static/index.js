@@ -19,24 +19,24 @@ function genPassword() {
 //      console.log("object copied to clipboard");
 //  });
 
-// const passwordField = window.opener.document.getElementById("password1");
-// const passwordField2 = window.opener.document.getElementById("password2");
-// const usePassword = document.getElementById('use_password');
-// const generatedPassword = document.getElementById('generatedPassword');
-// usePassword.addEventListener('click', () => {
-//      setPassword();
-// });
+const passwordField = window.opener.document.getElementById("password1");
+const passwordField2 = window.opener.document.getElementById("password2");
+const usePassword = document.getElementById('use_password');
+const generatedPassword = document.getElementById('generatedPassword');
+usePassword.addEventListener('click', () => {
+     setPassword();
+});
 
 //! // Set Password
-// function setPassword(){
-//      if (window.opener != null && !window.opener.closed){
-//           const passwordText = generatedPassword.textContent;
-//           passwordField.value = passwordText;
-//           passwordField2.value = passwordText;
+function setPassword(){
+     if (window.opener != null && !window.opener.closed){
+          const passwordText = generatedPassword.textContent;
+          passwordField.value = passwordText;
+          passwordField2.value = passwordText;
 
-//      }
-//      window.close();
-// };
+     }
+     window.close();
+};
 
 const clrSelect = document.querySelectorAll(".note-clr");
 const note_Background = document.querySelector(".note-pad");
