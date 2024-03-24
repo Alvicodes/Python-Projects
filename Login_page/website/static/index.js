@@ -19,23 +19,29 @@ function genPassword() {
 //      console.log("object copied to clipboard");
 //  });
 
-const passwordField = window.opener.document.getElementById("password1");
-const passwordField2 = window.opener.document.getElementById("password2");
+
 const usePassword = document.getElementById('use_password');
-const generatedPassword = document.getElementById('generatedPassword');
-usePassword.addEventListener('click', () => {
-     setPassword();
-});
+if (usePassword) {
+  usePassword.addEventListener('click', () => {
+    setPassword();
+  });
+}
 
 //! // Set Password
-function setPassword(){
-     if (window.opener != null && !window.opener.closed){
-          const passwordText = generatedPassword.textContent;
-          passwordField.value = passwordText;
-          passwordField2.value = passwordText;
+function setPassword() {
+  const passwordField = window.opener.document.getElementById("password1");
+  const passwordField2 = window.opener.document.getElementById("password2");
+  const generatedPassword = document.getElementById('generatedPassword');
 
-     }
-     window.close();
+  if (window.opener && !window.opener.closed) {
+    const passwordText = generatedPassword.textContent;
+    passwordField.value = passwordText;
+    passwordField2.value = passwordText;
+
+  }else {
+    console.error("Unable to set password: opener window is null or closed");
+  }
+  window.close();
 };
 
 const clrSelect = document.querySelectorAll(".note-clr");
@@ -68,6 +74,3 @@ clrSelect.forEach((item) => {
     });
 });
 
-//! Generate random code for each note
-// attach to li onclick
-//
